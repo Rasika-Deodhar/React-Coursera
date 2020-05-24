@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Menu from './components/MenuComponent';
 import { DISHES } from './shared/dishes';
 import { Navbar, NavbarBrand } from 'reactstrap';
+import Rough from './components/RoughComponent';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends Component {
           </div>
         </Navbar>
         <Menu dishes={this.state.dishes} />
+        <Rough />
       </div>
     );
   }
