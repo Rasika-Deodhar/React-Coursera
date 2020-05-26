@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import {
-    Card, CardImg, CardImgOverlay, CardText, CardBody,
-    CardTitle
-} from 'reactstrap';
 import Menu from './MenuComponent';
 import { DISHES } from '../shared/dishes';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import DishDetail from './DishdetailComponent';
-
 
 class Main extends Component {
     constructor(props) {
