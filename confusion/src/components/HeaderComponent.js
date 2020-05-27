@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Jumbotron, NavbarToggler, Collapse, NavItem, NavLink, Nav } from 'reactstrap';
+// import { Link } from 'react-router-dom';
+
 
 class Header extends Component {
     constructor(props) {
@@ -29,7 +31,7 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
+                                    <NavLink className="nav-link" to='/home'><span className="fa fa-home fa-lg"></span> Home </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to='/aboutus'><span className="fa fa-info fa-lg"></span> About Us</NavLink>
