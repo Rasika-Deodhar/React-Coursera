@@ -23,26 +23,34 @@ function RenderDish({ dishDetails }) {
     );
 }
 
-function RenderComments({ dishDetails }) {
-    const comment = dishDetails.comments.map((c) => {
-        return (
-            <div className="col-12 col-md-5 m-1">
-                <p>{c.comment}</p>
-                <p>--{c.author} &nbsp; &nbsp;
-                        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(c.date)))}
-                </p>
-            </div>
-        );
-    });
-    return (
-        <div className="container">
-            <div className="row">
+function RenderComments({ comments }) {
+    if (comments != null) {
+        const comment = comments.map((c) => {
+            return (
                 <div className="col-12 col-md-5 m-1">
-                    {comment}
+                    <p>{c.comment}</p>
+                    <p>--{c.author} &nbsp; &nbsp;
+                            {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(c.date)))}
+                    </p>
+                </div>
+            );
+        });
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        {comment}
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
+    else {
+        return (
+            <div> </div>
+        );
+    }
+
 }
 
 const DishDetail = (props) => {
@@ -52,10 +60,10 @@ const DishDetail = (props) => {
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dishDetail.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name}</h3>
+                        <h3>{props.dishDetail.name}</h3>
                         <hr />
                     </div>
                 </div>
@@ -66,7 +74,7 @@ const DishDetail = (props) => {
 
                     <div><h4>Comments</h4></div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments dishDetails={props.dishDetail} />
+                        <RenderComments dishDetails={props.comments} />
                     </div>
                 </div>
 
