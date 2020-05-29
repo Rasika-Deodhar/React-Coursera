@@ -1,10 +1,11 @@
 import React from 'react';
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle
+    CardTitle, Breadcrumb, BreadcrumbItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-function RenderDish({dishDetails}) {
+function RenderDish({ dishDetails }) {
     return (
         <div className="container">
             <div className="row">
@@ -22,7 +23,7 @@ function RenderDish({dishDetails}) {
     );
 }
 
-function RenderComments({dishDetails}) {
+function RenderComments({ dishDetails }) {
     const comment = dishDetails.comments.map((c) => {
         return (
             <div className="col-12 col-md-5 m-1">
@@ -48,9 +49,27 @@ const DishDetail = (props) => {
     if (props.dishDetail != null) {
         return (
             <div className="container">
-                <RenderDish dishDetails={props.dishDetail} />
-                <div><h4>Comments</h4></div>
-                <RenderComments dishDetails={props.dishDetail} />
+                <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderDish dishDetails={props.dishDetail} />
+                    </div>
+
+                    <div><h4>Comments</h4></div>
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderComments dishDetails={props.dishDetail} />
+                    </div>
+                </div>
+
             </div>
         );
     }
